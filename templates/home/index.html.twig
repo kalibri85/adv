@@ -4,6 +4,14 @@
 
 {% block body %}
     <div class="title">Hello</div>
-
-
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div class="sign"><i class="fas fa-user"></i> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</div>
+    {% else %}
+        <a class="sign" id="LoginButton" href="{{ path('fos_user_security_login') }}">
+            <i class="fas fa-unlock-alt"></i> Sign in
+        </a>
+    {% endif %}
+    <a class="sign" id="LoginButton" href="{{ path('fos_user_registration_register') }}">
+        Register
+    </a>
 {% endblock %}
