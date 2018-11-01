@@ -1,22 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Homepage - {{ parent() }}{% endblock %}
-
-{% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    {{ parent() }}
-
-{% endblock %}
+{% block title %}Homepage {% endblock %}
 
 {% block body %}
-    <h1 class="display-5">Studentai</h1>
-    <ul class="list-group">
+    <div class="title">Hello</div>
 
-        {% for key, project in projects %}
-        {% for members in project.members %}
-            <li class="list-group-item"><a href="{{ path('studentas', {'utm_campaign':project.mentor, 'utm_term': members, 'utm_content':key } ) }}">{{ members }}</a></li>
-            {% endfor %}
-        {% endfor %}
 
-    </ul>
-    {% endblock %}
+{% endblock %}
