@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AdvertisementsRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -14,10 +15,13 @@ class HomeController extends Controller
     /**
      * @Route("/", name="home")
      */
-    public function index()
-    {
-       return $this->render(
-           'home/index.html.twig'
-       );
+    public function index(AdvertisementsRepository $advertisementsRepository)
+{
+    $adv = $advertisementsRepository->findAllJointUser();
+    return $this->render('home/index.html.twig',
+        [
+            'advertisements' => $adv
+        ]
+    );
     }
 }

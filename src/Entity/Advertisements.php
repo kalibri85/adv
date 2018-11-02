@@ -9,29 +9,29 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Advertisements
 {
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $title;
-
     /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
-
     /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $user;
-
     /**
      * @ORM\Column(type="datetime")
      */
@@ -65,20 +65,16 @@ class Advertisements
 
         return $this;
     }
-
     /**
      * @return User
      */
-
     public function getUser()
     {
         return $this->user;
     }
-
     /**
      * @param User $user
      */
-
     public function setUser(User $user)
     {
         $this->user = $user;
@@ -88,11 +84,11 @@ class Advertisements
     {
         return $this->date;
     }
-
-    public function setDate(\DateTimeInterface $date): self
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setDate()
     {
-        $this->date = $date;
-
-        return $this;
+        $this->date = new \DateTime();
     }
 }

@@ -19,6 +19,18 @@ class AdvertisementsRepository extends ServiceEntityRepository
         parent::__construct($registry, Advertisements::class);
     }
 
+    /**
+     * @return mixed
+     */
+    public function findAllJointUser()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.date', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Advertisements[] Returns an array of Advertisements objects
 //     */

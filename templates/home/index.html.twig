@@ -15,4 +15,11 @@
         Register
     </a>
     <a href="{{ path('advertisements_add') }}" class="btn btn-outline-dark top-btn"><i class="fas fa-plus"></i> Pridėti</a>
+
+    {% for advertisement in advertisements if advertisements is defined %}
+        {{ advertisement.title }}
+        {{ advertisement.description }}
+        {{ advertisement.User.username }}
+        {{ advertisement.date|date("Y-m-d") }}
+    {% endfor %}
 {% endblock %}
