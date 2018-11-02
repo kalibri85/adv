@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <!--============================= ADD ADV =============================-->
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+        <div class="row">
+            <div class="col-md-12 col-xl-8 go-back">
+                <a href="javascript:history.back()" class="itemData"><i class="fas fa-long-arrow-alt-left"></i> Atgal</a>
+            </div>
+        </div>
+        <div class="row light-bg booking-details_wrap">
+            <div class="booking-checkbox_wrap col-xl-8">
+                <div class="form-block col-md-11 mx-auto">
+                    {{ form_start(our_form, {attr: {class: 'add-form'}} ) }}
+                    <div class="row">
+                        <div class="col-4 col-inline-padding-left">
+                            {{ form_row(our_form.title, {attr: {class: ''}}) }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12 col-md-4 col-inline-padding-left item-title">
+                            {{ form_label(our_form.information) }}
+                        </div>
+                        <div class="col-sm-12 col-md-8 col-lg-4 col-inline-padding-right">
+                            {{ form_widget(our_form.information) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col btn-align">
+                            {{ form_widget(our_form.save, {attr: {class: 'btn btn-form3'}}) }}
+                        </div>
+                    </div>
+                    {{ form_end(our_form) }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
