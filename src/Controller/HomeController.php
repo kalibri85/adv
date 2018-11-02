@@ -24,4 +24,11 @@ class HomeController extends Controller
         ]
     );
     }
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function showAdmin(AdvertisementsRepository $advertisementsRepository)
+    {
+        return $this->render('admin/index.html.twig');
+    }
 }

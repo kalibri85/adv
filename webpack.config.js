@@ -11,6 +11,9 @@ Encore
     .enableVersioning(Encore.isProduction())
     // uncomment to define the assets of the project
     .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/main', './assets/js/main.js')
+    .addEntry('js/jquery.min', './assets/js/jquery.min.js')
+    .addEntry('js/bootstrap.min', './assets/js/bootstrap.min.js')
     .addStyleEntry('css/app', './assets/css/app.scss')
 
     // uncomment if you use Sass/SCSS files
