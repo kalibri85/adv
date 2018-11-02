@@ -18,6 +18,21 @@
     <!--==============================header=================================-->
     <header>
         <h2 class="method2"></h2>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <div class="sign"><i class="fas fa-user"></i> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</div>
+            <a class="dropdown-item" href="{{ path('advertisements_my') }}">My Advertisements</a>
+            <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Log out</a>
+        {% else %}
+            <a class="sign" id="LoginButton" href="{{ path('fos_user_security_login') }}">
+                <i class="fas fa-unlock-alt"></i> Log in
+            </a>
+            <a class="sign" id="LoginButton" href="{{ path('fos_user_registration_register') }}">
+            New User Registration
+        </a>
+        {% endif %}
+
+
+        <a href="{{ path('advertisements_add') }}" class="btn btn-outline-dark top-btn"><i class="fas fa-plus"></i> Pridėti</a>
     </header>
     {% block body %}{% endblock %}
 </div>

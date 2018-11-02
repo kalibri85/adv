@@ -20,7 +20,7 @@ class AdvertisementsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return mixed
+     * @return Advertisements[]
      */
     public function findAllJointUser()
     {
@@ -29,6 +29,22 @@ class AdvertisementsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
             ;
+    }
+
+    /**
+     * @return Advertisements[]
+     */
+    public function findAllByUser($value)
+    {
+
+        $adv = $this->createQueryBuilder('a')
+            ->andWhere('a.user = :user')
+            ->orderBy('a.date', 'DESC')
+            ->setParameter('user', $value);
+
+        return $adv
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**
